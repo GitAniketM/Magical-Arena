@@ -12,8 +12,8 @@ Magical Arena is a Java application that simulates battles between players in a 
 ## How to Run
 1. Make sure you have Java and maven installed on your system.
 2. Clone or download this repository.
-3. Run the command in your terminal : `mvn clean install`
-4. Run the application using the command : `java -jar target/magicalArena-0.0.1-SNAPSHOT.jar`
+3. Run the command in your terminal: `mvn clean install`
+4. Run the application using the command: `java -jar target/magicalArena-0.0.1-SNAPSHOT.jar`
 
 ## Testing
 The project includes comprehensive unit tests to verify the functionality of the Player and MagicalArena classes.
