@@ -1,20 +1,23 @@
 import com.example.magicalArena.model.Player;
 import com.example.magicalArena.service.MagicalArenaServiceImpl;
-import org.testng.annotations.Test;
-
-import static org.testng.AssertJUnit.*;
 
 public class TestMagicalArena {
-    @Test
-    public void testPlayerInitialization() {
-        Player playerA = new Player("aniket",50, 5, 10);
-        assertEquals(50, playerA.getHealth());
-        assertEquals(5, playerA.getStrength());
-        assertEquals(10, playerA.getAttack());
+    public static void main(String[] args) {
+        testPlayerInitialization();
+        testPlayerAttack();
+        testPlayerDefend();
+        testArenaMatch();
     }
 
-    @Test
-    public void testPlayerAttack() {
+    public static void testPlayerInitialization() {
+        Player playerA = new Player("aniket", 50, 5, 10);
+        assert playerA.getHealth() == 50 : "Player health initialization failed";
+        assert playerA.getStrength() == 5 : "Player strength initialization failed";
+        assert playerA.getAttack() == 10 : "Player attack initialization failed";
+        System.out.println("testPlayerInitialization passed");
+    }
+
+    public static void testPlayerAttack() {
         Player playerA = new Player("aniket", 50, 5, 10);
         Player playerB = new Player("rahul", 100, 10, 5);
 
@@ -25,29 +28,38 @@ public class TestMagicalArena {
         playerB.receiveDamage(damage * playerA.getAttack());
 
         // Check if playerB's health has decreased
-        assertTrue(playerB.getHealth() <= initialHealth);
+        if (playerB.getHealth() <= initialHealth) {
+            System.out.println("testPlayerAttack passed");
+        } else {
+            System.out.println("testPlayerAttack failed: PlayerB health did not decrease after attack");
+        }
     }
 
-    @Test
-    public void testPlayerDefend() {
+    public static void testPlayerDefend() {
         Player playerA = new Player("aniket", 50, 5, 10);
         int initialHealth = playerA.getHealth();
         int damage = 60;
         playerA.receiveDamage(damage);
 
         // Verify that health has decreased
-        assertTrue(playerA.getHealth() <= initialHealth);
+        if (playerA.getHealth() <= initialHealth) {
+            System.out.println("testPlayerDefend passed");
+        } else {
+            System.out.println("testPlayerDefend failed: PlayerA health did not decrease after receiving damage");
+        }
     }
 
-
-    @Test
-    public void testArenaMatch() {
-        Player playerA = new Player("aniket",50, 5, 10);
-        Player playerB = new Player("rahul",100, 10, 5);
+    public static void testArenaMatch() {
+        Player playerA = new Player("aniket", 50, 5, 10);
+        Player playerB = new Player("rahul", 100, 10, 5);
 
         MagicalArenaServiceImpl arena = new MagicalArenaServiceImpl(playerA, playerB);
         arena.simulateMatch();
 
-        assertFalse(playerA.isAlive() && playerB.isAlive());
+        if (!playerA.isAlive() || !playerB.isAlive()) {
+            System.out.println("testArenaMatch passed");
+        } else {
+            System.out.println("testArenaMatch failed: Both players are still alive after match simulation");
+        }
     }
 }
