@@ -2,8 +2,6 @@ package com.example.magicalArena.service;
 
 import com.example.magicalArena.model.Player;
 
-import java.util.Random;
-
 public class MagicalArenaServiceImpl {
     private Player playerA;
     private Player playerB;
@@ -52,9 +50,9 @@ public class MagicalArenaServiceImpl {
 
         System.out.println("-------------------------------------------------------");
         if (playerA.isAlive()) {
-            System.out.println("Player A wins!");
+            System.out.println(playerA.getName() + " wins!");
         } else {
-            System.out.println("Player B wins!");
+            System.out.println(playerB.getName() + " wins!");
         }
         System.out.println("======= Match Ended =======");
     }
