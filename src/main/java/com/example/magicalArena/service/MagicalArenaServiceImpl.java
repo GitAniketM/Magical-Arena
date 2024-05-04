@@ -40,5 +40,6 @@ public class MagicalArenaServiceImpl {
         }
         System.out.println("======= Match Ended =======");
     }
+
 }
 
