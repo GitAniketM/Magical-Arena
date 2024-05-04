@@ -19,6 +19,8 @@ public class Player {
         this.strength = strength;
         this.attack = attack;
         this.random = new Random();
+        if (health < 0 || strength < 0 || attack < 0)
+            throw new RuntimeException("Health, strength or attack values cannot be negative");
     }
 
     // Getters
